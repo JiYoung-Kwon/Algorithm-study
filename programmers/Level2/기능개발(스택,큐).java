@@ -19,12 +19,11 @@ class Solution {
         //배포
         for (int i=1; i<progresses.length; i++){
             if(max < progresses[i]){//지금 기능이 더 빨리 완성되면
-                //배포하기. 배포 하면 continue
                 answer.add(push);
                 push = 1;
                 max = progresses[i];
             }
-            else //더 오래걸리면 배포 하루 미뤄
+            else //더 오래걸리면 배포 하루 미루기
                 push++;
                 if(i+1==progresses.length)
                     answer.add(push);
