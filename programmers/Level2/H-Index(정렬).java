@@ -3,6 +3,7 @@ class Solution {
         int answer = 0;
         int max = 0;
         int min = 0;
+        
         // 배열 중 최대, 최소값
         for(int i=0; i<citations.length; i++)
         {
@@ -11,6 +12,12 @@ class Solution {
             else if(citations[i] < min)
                 min = citations[i];
         }
+        
+        // for문 줄이기 (max,min 값 수정)
+        if(max > citations.length)
+            max = citations.length;
+        if(min > citations.length)
+            min = citations.length;
         
         // H-Index 구하기
         for(int i= min; i<=max; i++){ //min ~ max까지
