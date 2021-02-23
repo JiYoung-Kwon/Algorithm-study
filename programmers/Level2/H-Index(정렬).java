@@ -2,23 +2,25 @@ class Solution {
     public int solution(int[] citations) {
         int answer = 0;
         int max = 0;
-
-        // ë°°ì—´ ì¤‘ ê°€ì¥ í° ìˆ˜
+        int min = 0;
+        // ¹è¿­ Áß ÃÖ´ë, ÃÖ¼Ò°ª
         for(int i=0; i<citations.length; i++)
         {
             if(citations[i] > max)
                 max = citations[i];
+            else if(citations[i] < min)
+                min = citations[i];
         }
-
-        // H-Index êµ¬í•˜ê¸°
-        for(int i= 0; i<=max; i++){ //0~maxê¹Œì§€
+        
+        // H-Index ±¸ÇÏ±â
+        for(int i= min; i<=max; i++){ //min ~ max±îÁö
             int quotation = 0;
             for(int j=0; j<citations.length; j++){
-                if(citations[j] >= i) //ië²ˆ ì´ìƒ ì¸ìš©ëœ ë…¼ë¬¸ ê°œìˆ˜
+                if(citations[j] >= i) //i¹ø ÀÌ»ó ÀÎ¿ëµÈ ³í¹® °³¼ö
                     quotation++;
             }
-            if(quotation >= i) //ië²ˆ ì´ìƒ ì¸ìš©ëœ ë…¼ë¬¸ì´ ií¸ ì´ìƒì¼ ê²½ìš°
-                if(i >= answer) //ìµœëŒ“ê°’ ì €ì¥
+            if(quotation >= i) //i¹ø ÀÌ»ó ÀÎ¿ëµÈ ³í¹®ÀÌ iÆí ÀÌ»óÀÏ °æ¿ì
+                if(i >= answer) //ÃÖ´ñ°ª ÀúÀå
                     answer = i;
         }
         return answer;
